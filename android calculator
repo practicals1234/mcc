@@ -1,0 +1,176 @@
+Java file:
+package tutorials.crunchify.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+//    Button num1, num2, num3, add;
+   Button add,sub,mul,div;
+   EditText inp1, inp2, op;
+
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+
+//        num1 = (Button) findViewById(R.id.num1);
+//        num2 = (Button) findViewById(R.id.num2);
+//        num3 = (Button) findViewById(R.id.num3);
+       add = (Button) findViewById(R.id.add);
+       sub = (Button) findViewById(R.id.sub);
+       mul = (Button) findViewById(R.id.mul);
+       div = (Button) findViewById(R.id.div);
+
+
+       inp1 = (EditText) findViewById(R.id.inp1);
+       inp2 = (EditText) findViewById(R.id.inp2);
+       op = (EditText) findViewById(R.id.op);
+
+       add.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               int num1 = Integer.parseInt(inp1.getText() + "");
+               int num2 = Integer.parseInt(inp2.getText() + "");
+               op.setText(num1 + num2 + "");
+           }
+       });
+
+       sub.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               int num1 = Integer.parseInt(inp1.getText() + "");
+               int num2 = Integer.parseInt(inp2.getText() + "");
+               op.setText(num1 - num2 + "");
+           }
+       });
+
+       mul.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               int num1 = Integer.parseInt(inp1.getText() + "");
+               int num2 = Integer.parseInt(inp2.getText() + "");
+               op.setText(num1 * num2 + "");
+           }
+       });
+
+       div.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               int num1 = Integer.parseInt(inp1.getText() + "");
+               int num2 = Integer.parseInt(inp2.getText() + "");
+               op.setText(num1 / num2 + "");
+           }
+       });
+   }
+}
+
+XML file:
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+
+   <Button
+       android:id="@+id/add"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="119dp"
+       android:layout_marginEnd="204dp"
+       android:layout_marginBottom="253dp"
+       android:text="+"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent" />
+
+   <EditText
+       android:id="@+id/inp1"
+       android:layout_width="101dp"
+       android:layout_height="40dp"
+       android:layout_marginStart="30dp"
+       android:layout_marginTop="217dp"
+       android:layout_marginEnd="280dp"
+       android:ems="10"
+       android:inputType="textPersonName"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <EditText
+       android:id="@+id/inp2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="36dp"
+       android:layout_marginTop="218dp"
+       android:layout_marginEnd="31dp"
+       android:ems="10"
+       android:inputType="textPersonName"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toEndOf="@+id/inp1"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <EditText
+       android:id="@+id/op"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="110dp"
+       android:layout_marginTop="60dp"
+       android:layout_marginEnd="88dp"
+       android:layout_marginBottom="112dp"
+       android:ems="10"
+       android:inputType="textPersonName"
+       app:layout_constraintBottom_toTopOf="@+id/inp1"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <Button
+       android:id="@+id/sub"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="53dp"
+       android:layout_marginTop="43dp"
+       android:layout_marginEnd="270dp"
+       android:layout_marginBottom="161dp"
+       android:text="-"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/add" />
+
+   <Button
+       android:id="@+id/mul"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="64dp"
+       android:layout_marginTop="58dp"
+       android:layout_marginEnd="118dp"
+       android:layout_marginBottom="147dp"
+       android:text="x"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toEndOf="@+id/sub"
+       app:layout_constraintTop_toBottomOf="@+id/add" />
+
+   <Button
+       android:id="@+id/div"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="146dp"
+       android:layout_marginTop="60dp"
+       android:layout_marginEnd="178dp"
+       android:layout_marginBottom="38dp"
+       android:text="/"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/mul" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
